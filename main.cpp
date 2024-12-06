@@ -1,5 +1,5 @@
 // Kit Pollinger
-//  210 Lab 38 | Hash Table 2
+//  210 Lab 38 | Hash Tables 2
 #include <iostream>
 #include <string>  // For string
 #include <fstream> // For Part 2 and 3
@@ -31,14 +31,14 @@ int gen_hash_index(const string &str)
 
 //Voids
 void printEntries(const map<int, list<string>>& hash_table);
-void search_key(const map<int, list<string>>& hash_table);
-void add_key(map<int, list<string>>& hash_table);
-void remove_key(map<int, list<string>>& hash_table);
-void modify_key(map<int, list<string>>& hash_table)
+void searchKey(const map<int, list<string>>& hash_table);
+void addKey(map<int, list<string>>& hash_table);
+void removeKey(map<int, list<string>>& hash_table);
+void modifyKey(map<int, list<string>>& hash_table);
 
 int main()
 {
-    /* Part 1 and 2
+    /* Part 1 and 2 - Found in HTablesMain branch
 
         cout << "Demo Code:\n";
         char a = 'A';
@@ -85,10 +85,10 @@ int main()
         return 0;
     } */
 
-    cout << "Part 3: \n";
+    cout << "Lab 38: Hash Tables 2 \n";
 
-    const string filename = "lab-37-data.txt"; // Name of the dataset file
-    ifstream infile(filename);                 // Open the file for reading
+    const string filename = "lab-37-data.txt"; // Name of file
+    ifstream infile(filename);                 // Open file for reading
 
     if (!infile)
     {
@@ -102,11 +102,31 @@ int main()
     while (infile >> codeLine)
     {
         int hash_index = gen_hash_index(codeLine);  // Generates hash index
+        
+       // Finding Codes in txt File with their Keys / Debugging
+        cout << "Storing string: " << codeLine << " with key: " << hash_index << endl;
         hash_table[hash_index].push_back(codeLine); // Insert the code into the list at that hash index
     }
+
     infile.close();
 
-    //Moved 100 Entries to a void
+/*
+    //Moved 100 Entries code to a void
+
+    //Display first 100 entries of the hash table
+    
+    int count = 0;
+    for (const auto& entry : hash_table) {
+        if (count++ >= 100) break; // Limit to the first 100 entries
+        cout << "Hash Index: " << entry.first << endl;
+        cout << "Codes: ";
+        for (const string& code : entry.second) {
+            cout << code << " ";
+        }
+        cout << endl;
+    }
+
+    */
     int userChoice = 0;
 
     while (userChoice != 6){
@@ -119,8 +139,28 @@ int main()
         cout << "[6] Exit" << endl;
         cout << "Enter your choice: ";
         cin >> userChoice;
-    }
 
+        switch (userChoice) {
+            case 1:
+                printEntries(hash_table);
+                break;
+            case 2:
+                searchKey(hash_table);
+                break;
+            case 3:
+                addKey(hash_table);
+                break;
+            case 4:
+                removeKey(hash_table);
+                break;
+            case 5:
+                modifyKey(hash_table);
+                break;
+            case 6:
+                cout << "Exiting program..." << endl;
+                break;
+        }
+    }
 
     return 0;
 }
@@ -147,7 +187,7 @@ void printEntries(const map<int, list<string>>& hash_table) {
 }
 
 // search key in the hash table
-void search_key(const map<int, list<string>>& hash_table) {
+void searchKey(const map<int, list<string>>& hash_table) {
     int key;
     cout << "Enter the hash index to search for: ";
     cin >> key;
@@ -166,18 +206,17 @@ void search_key(const map<int, list<string>>& hash_table) {
 }
 
 //add a new key and code to the hash table
-void add_key(map<int, list<string>>& hash_table) {
+void addKey(map<int, list<string>>& hash_table) {
     string new_code;
     cout << "Enter the 12-character code to add: ";
     cin >> new_code;
-
     int hash_index = gen_hash_index(new_code);
     hash_table[hash_index].push_back(new_code);
     cout << "Code added to hash index " << hash_index << "." << endl;
 }
 
 //remove  key from the hash table
-void remove_key(map<int, list<string>>& hash_table) {
+void removeKey(map<int, list<string>>& hash_table) {
     int key;
     cout << "Enter the hash index to remove: ";
     cin >> key;
@@ -190,7 +229,7 @@ void remove_key(map<int, list<string>>& hash_table) {
 }
 
 //modify key in the hash table
-void modify_key(map<int, list<string>>& hash_table) {
+void modifyKey(map<int, list<string>>& hash_table) {
     int key;
     cout << "Enter the hash index to modify: ";
     cin >> key;
