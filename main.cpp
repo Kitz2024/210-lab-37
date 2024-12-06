@@ -38,7 +38,11 @@ void modifyKey(map<int, list<string>>& hash_table);
 
 int main()
 {
-    /* Part 1 and 2 - Found in HTablesMain branch
+    /* 
+    side note: I accidentally made another branch because I thought I didn't make a new branch for Lab 38. 
+    But I went into github and realized I did make it.
+    
+    Part 1 and 2 - Found in HTablesMain branch
 
         cout << "Demo Code:\n";
         char a = 'A';
@@ -102,9 +106,8 @@ int main()
     while (infile >> codeLine)
     {
         int hash_index = gen_hash_index(codeLine);  // Generates hash index
-        
        // Finding Codes in txt File with their Keys / Debugging
-        cout << "Storing string: " << codeLine << " with key: " << hash_index << endl;
+        //cout << "Storing string: " << codeLine << " with key: " << hash_index << endl;
         hash_table[hash_index].push_back(codeLine); // Insert the code into the list at that hash index
     }
 
