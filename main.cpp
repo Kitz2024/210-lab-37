@@ -103,8 +103,8 @@ int main()
     {
         int hash_index = gen_hash_index(codeLine);  // Generates hash index
         
-       // Finding Codes in txt File with their Keys / Debugging
-        cout << "Storing string: " << codeLine << " with key: " << hash_index << endl;
+       /*//Finding Codes in txt File with their Keys / Debugging
+        cout << "Storing string: " << codeLine << " with key: " << hash_index << endl;*/
         hash_table[hash_index].push_back(codeLine); // Insert the code into the list at that hash index
     }
 
