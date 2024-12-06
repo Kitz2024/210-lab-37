@@ -2,7 +2,7 @@
 //  210 Lab 37 | Hash Table
 #include <iostream>
 #include <string>  // For string
-#include <fstream> // For Part 3
+#include <fstream> // For Part 2 and 3
 using namespace std;
 
 // Function to calculate the sum of ASCII values in a string
@@ -25,7 +25,7 @@ int main()
     int b = 66;
     cout << b << endl;
     cout << (char)b << endl;
-    
+
     // Testing the sum_ascii function
     string AsciiTest;
     cout << "Part 1: \n";
@@ -39,12 +39,27 @@ int main()
     cout << "Part 2: \n";
 
     const string filename = "lab-37-data.txt"; // Name of the dataset file
-    ifstream infile(filename); // Open the file for reading
+    ifstream infile(filename);                 // Open the file for reading
 
-    if (!infile) {
+    if (!infile)
+    {
         cout << "Error: Could not open file!" << endl;
         return 1;
     }
+
+    string codeLine;
+    long long lineTotal = 0; // Use long long for large numbers
+
+    // Read each line from the file, calculate ASCII sum, and add to the grand total
+    while (infile >> codeLine)
+    {
+        lineTotal += sum_ascii(codeLine);
+    }
+
+    infile.close(); // Close the file
+
+    // Output the  total ASCII Sum from File
+    cout << " Total ASCII Sum: " << lineTotal << endl;
     return 0;
 }
 /*
