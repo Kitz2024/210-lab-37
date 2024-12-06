@@ -1,5 +1,5 @@
 // Kit Pollinger
-//  210 Lab 37 | Hash Table
+//  210 Lab 38 | Hash Table 2
 #include <iostream>
 #include <string>  // For string
 #include <fstream> // For Part 2 and 3
@@ -32,7 +32,7 @@ int gen_hash_index(const string &str)
 int main()
 {
     /* Part 1 and 2
-    
+
         cout << "Demo Code:\n";
         char a = 'A';
         cout << a << endl;
@@ -113,6 +113,8 @@ int main()
         }
         cout << endl;
     }
+
+
     return 0;
 }
 /*
